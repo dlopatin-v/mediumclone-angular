@@ -43,8 +43,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     console.log(this.form.value)
     this.store.dispatch(registerAction(this.form.value))
+    console.log('userdata ', this.form.value)
     this.authService
-      .register(this.form.value)
+      .register({ user: this.form.value })
       .subscribe((currentUser: CurrentUserInterface) => {
         console.log('currentUser ', currentUser)
       })
